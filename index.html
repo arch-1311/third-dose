@@ -13,11 +13,12 @@
 	<body style = "text-align:center;">
 		
 		<h1 style = "color:green;" >
-			Your 3rd Dose is Due on
+			<u>Booster Dose Calculator</u>
 		</h1>
+<h3 style = "color:blue;"> You must have atleast 9 months gap as per MoHFW advised </h3>
 		
-		<p> <input type="text" id = "txtDate" style =
-			"font-size: 19px; font-weight: bold;"/>
+		<p style ="font-size: 19px;"> Enter your 2nd vaccine dose date <input type="date" id = "txtDate" style =
+			"font-size: 19px; font-weight: bold;"/> 
 		</p>
 		
 		<button onClick = "getdate()">
@@ -29,10 +30,10 @@
 		</p>
 		
 		<script>
-		$(document).ready(function () {
+		/*$(document).ready(function () {
     $('#txtDate').datepicker();
     $('#follow_Date').datepicker();
-});
+});*/
 
 function getdate() {
     var tt = document.getElementById('txtDate').value;
