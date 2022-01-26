@@ -5,31 +5,24 @@
 	<title>Booster dose calculator</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- <meta name="theme-color" content="#157878">
-       -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="jquery-ui.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 	<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-	<!-- <link rel="stylesheet" href="styles.css"> -->
 </head>
 
 <body>
-	<!-- <div style = "position: relative;  text-align: center;"> -->
 	<div class="px-4 py-4 my-4 text-center"> <img src='3rd-dose.png' alt="Booster Dose Banner" style="width: 90%; height: auto; padding: 2rem;" />
-		<!-- <div style ="position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%);"> -->
 		<div class="container">
 			<p class="lead mb-4" style="font-size:18px;font-family: Arial, Helvetica, sans-serif;"> This tool was built based on information by MoHFW. Precaution (booster) dose can only be taken after 9 months i.e., 39 weeks from the date of administration of 2nd dose. </p>
 			<p class="lead mb-4" style="font-size:18px;font-family: Arial, Helvetica, sans-serif;"> All Healthcare workers, Frontline workers and citizens aged 60 years or above with comorbidities are eligible for precaution dose (booster). </p>
 			<hr/>
 			<div>
 				<h4 class="dose"> Enter your 2nd dose date &nbsp; </h4>
-				<h4> <input type="date" style="padding: 1rem 1rem 1rem 1rem;" id = "txtDate"/> </h4> </div>
-			<!-- font-size: 19px -->
-			<!-- <button type="button" class="btn btn-outline-primary">Primary</button>  -->
+				<h4> <input type="date" style="padding: 1rem 1rem 1rem 1rem;" id = "txtDate" min="2021-01-01" onblur="getdate()"/> </h4> </div>
 			<div>
-				<button type="button" class="btn btn-secondary button" onClick="getdate()"> CLICK HERE </button>
+				<button id ='click' type="button" class="btn btn-secondary button" onClick="getdate()"> CLICK HERE </button>
 			</div>
 			<div class="px-3 py-2 my-2 text-center">
 				<h4 class="display-8 fw-bold" style="color:#005cb9; font-weight: bold;" id="demo"></h4>
@@ -41,28 +34,31 @@
 		</div>
 	</div>
 	<script>
-	function getdate() {
-		var numWeeks = 39;
-		var tt = document.getElementById('txtDate').value;
-		var date = new Date(tt);
-		var newdate = new Date(date);
-		var dt = new Date(newdate);
-		dt.setDate(dt.getDate() + numWeeks * 7);
+		function getdate() {
+			var numWeeks = 39;
+			var tt = document.getElementById('txtDate').value;
+			console.log(tt);
+			if (tt == null || tt == '') {
+				console.log('inside if');
+				document.getElementById("demo").innerHTML = "<h5 style='color:red;font-family: Arial, Helvetica, sans-serif;'>Please select your 2nd dose date</h5>" ;
+			} else { 
+			console.log('inside else');
+				var date = new Date(tt);
+				var newdate = new Date(date);
+				var dt = new Date(newdate);
+				dt.setDate(dt.getDate() + numWeeks * 7);
 
-		function x(n) {
-			return(n < 10 ? '0' : '') + n;
+				function x(n) {
+					return(n < 10 ? '0' : '') + n;
+				}
+				var doseDate = dt;
+				var month = x(doseDate.getMonth() + 1); 
+				var day = x(doseDate.getDate()); 
+				var year = doseDate.getFullYear();
+				var formattedDate = day + "-" + month + "-" + year;
+				document.getElementById("demo").innerHTML = "Your possible 3rd dose date is " + formattedDate;		
+			}
 		}
-		var doseDate = dt;
-		var month = x(doseDate.getMonth() + 1); //months (0-11)
-		var day = x(doseDate.getDate()); //day (1-31)
-		var year = doseDate.getFullYear();
-		var formattedDate = day + "-" + month + "-" + year;
-		document.getElementById("demo").innerHTML = "Your possible 3rd dose date is " + formattedDate;
-		//dt.toLocaleDateString().split("/").join("-");
-		//dt.toISOString().slice(0,10);
-		//dt.toLocaleDateString();
-	}
-	//up.innerHTML = "Enter the 2nd vaccine dose Date= "+ d.toLocaleDateString();
 	</script>
 </body>
 
