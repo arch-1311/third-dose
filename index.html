@@ -15,7 +15,7 @@
    <body>
       <!-- <div style = "position: relative;  text-align: center;"> -->
       <!-- <img alt="" src='Vacc.png' style="width:100%;"> -->
-      <div class="px-4 py-3 my-3 text-center">
+      <div class="px-4 py-3 my-3 text-center" padding=" 1rem 1rem 1rem 1rem;">
 		<img src='3rd-dose.png' alt="Booster Dose Banner" style="width: 90%;height: auto;"/>
       <!-- <div style ="position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%);"> -->
 		  <div class = "container">
@@ -25,7 +25,7 @@
 			 </br>
 			
 		<p class="lead mb-4" style="font-size:18px;font-family: Arial, Helvetica, sans-serif;">
-			This tool was built based on information by MOHFW precaution (booster) dose can only be taken after 9 months i.e., 39 weeks from the date of administration of 2nd dose.
+			This tool was built based on information by MoHFW. Precaution (booster) dose can only be taken after 9 months i.e., 39 weeks from the date of administration of 2nd dose.
 		</p>
 		<p class="lead mb-4" style="font-size:18px;font-family: Arial, Helvetica, sans-serif;">
 			All Healthcare workers, Frontline workers and citizens aged 60 years or above with comorbidities are eligible for precaution dose (booster).
@@ -39,8 +39,7 @@
 				&nbsp;&nbsp;&nbsp; As per MoHFW regulation you must atleast have 9 months gap before taking your booster dose. &nbsp;&nbsp;&nbsp;
 			 </h4> </br> -->
 			 <h4 class ="dose" style="
-    padding: 1rem 1rem 1rem 1rem;"> Enter your 2nd dose date <input type="date" style="
-    padding: 1rem 1rem 1rem 1rem;" id = "txtDate"/> </h4> </br>
+    padding: 1rem 1rem 1rem 1rem;"> Enter your 2nd dose date &nbsp; <input type="date" style="padding: 1rem 1rem 1rem 1rem;" id = "txtDate"/> </h4> </br>
 			 <!-- font-size: 19px -->
 			 <!-- <button type="button" class="btn btn-outline-primary">Primary</button>  -->
 			 <div class="px-3 py-2 my-2 text-center">
@@ -49,7 +48,7 @@
 					<h3 class="display-8 fw-bold" id = "demo"></h3>  
 						
 <hr/>					<p class="lead mb-4 mt-20" style="font-size:14px;font-family: Arial, Helvetica, sans-serif;">
-    Note: In case an individual was covid19, all Covid vaccination including precautionary dose to be deferred by 3 months after recovery. Call 104 for vaccination related queries | This tool is not medical advice.<br/>
+    Note: In case an individual is affected by covid19, all Covid vaccination including precautionary dose to be deferred by 3 months after recovery. Call 104 for vaccination related queries | This tool is not medical advice.<br/>
     <hr/>
 	Check out <a href ="https://newsofchennai.app/">NewsofChennai.App</a> - A citizen app for Chennai |
 Follow News of Chennai on <a href="https://www.instagram.com/newsofchennai/">Instagram </a> |
@@ -67,14 +66,15 @@ Follow News of Chennai on <a href="https://www.instagram.com/newsofchennai/">Ins
          });*/
          
          function getdate() {
+			var numWeeks = 39;
            var tt = document.getElementById('txtDate').value;
          
            var date = new Date(tt);
            var newdate = new Date(date);
 		   var dt = new Date(newdate);
-               dt.setMonth( dt.getMonth() + 9 );
-         
-         document.getElementById("demo").innerHTML = "Your Due Date is " + dt.toLocaleDateString();
+               //dt.setMonth( dt.getMonth() + 9 );
+         dt.setDate(dt.getDate() + numWeeks * 7);
+         document.getElementById("demo").innerHTML = "Your possible 3rd dose date is " + dt.toLocaleDateString();
          
                
          }
